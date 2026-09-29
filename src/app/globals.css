@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #F8F6F0; /* Calm Beige */
+  --color-foreground: #1c1917; /* Dark text */
+  --color-neon-purple: #8b5cf6;
+  --color-neon-blue: #3b82f6;
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Invert colors for light mode so existing utility classes adapt automatically */
+  --color-white: #1c1917; /* text-white will render as dark text */
+  --color-black: #F8F6F0; /* bg-black will render as beige */
+  
+  --color-gray-900: #e7e5e4;
+  --color-gray-800: #d6d3d1;
+  --color-gray-700: #a8a29e;
+  --color-gray-600: #78716c;
+  --color-gray-500: #57534e;
+  --color-gray-400: #44403c;
+  --color-gray-300: #292524;
+  --color-gray-200: #1c1917;
+  --color-gray-100: #0c0a09;
+}
+
+:root {
+  --background: #F8F6F0; /* Calm Beige */
+  --foreground: #1c1917; /* Dark text */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  cursor: none; /* We will use custom cursor */
+}
+
+/* Force Tailwind classes to obey light theme */
+.text-white { color: #1c1917 !important; }
+.bg-white { background-color: #1c1917 !important; }
+.text-gray-400 { color: #57534e !important; }
+.text-gray-300 { color: #44403c !important; }
+.text-gray-200 { color: #292524 !important; }
+.border-white\/10 { border-color: rgba(28, 25, 23, 0.1) !important; }
+.border-white\/5 { border-color: rgba(28, 25, 23, 0.05) !important; }
+.bg-black\/20 { background-color: rgba(248, 246, 240, 0.5) !important; }
+.bg-black { background-color: #F8F6F0 !important; }
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(0, 0, 0, 0.03); /* Changed to dark overlay for light theme */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.glass-purple {
+  background: rgba(139, 92, 246, 0.08); /* Adjusted for light theme visibility */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 4px 30px rgba(139, 92, 246, 0.15);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3), 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.glow-box {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3), inset 0 0 15px rgba(59, 130, 246, 0.1);
+}
+
+/* Lenis Smooth Scroll Utilities */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
