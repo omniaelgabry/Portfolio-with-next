@@ -26,9 +26,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "py-4 glass border-b border-white/5" : "py-6 bg-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "py-4 glass border-b border-white/5" : "py-6 bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center max-w-7xl">
         <Link href="/" className="text-2xl font-bold tracking-tighter text-white">
@@ -55,8 +54,8 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <button 
-          className="md:hidden text-violet-600 hover:text-violet-800 transition-colors"
+        <button
+          className="md:hidden text-white hover:text-violet-400 transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
