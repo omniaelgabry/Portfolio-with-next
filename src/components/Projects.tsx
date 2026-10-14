@@ -1,11 +1,12 @@
 "use client";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
 import { ExternalLink } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 const projects = [
   {
@@ -124,7 +125,7 @@ export default function Projects() {
     <section id="projects" ref={containerRef} className="py-32 relative">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="text-center md:text-left mb-16">
-          <h2 className="text-sm font-bold tracking-widest text-violet-400 uppercase mb-4">Portfolio</h2>
+          <h2 className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: 'var(--violet-label)' }}>Portfolio</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-white">Selected Projects</h3>
         </div>
 
@@ -149,7 +150,7 @@ export default function Projects() {
                       {project.title}
                       <ExternalLink size={20} className="text-violet-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                     </h4>
-                    <p className="text-gray-400 max-w-xl group-hover:text-gray-300 transition-colors">
+                    <p className="max-w-xl group-hover:text-gray-300 transition-colors" style={{ color: 'var(--fg-muted)' }}>
                       {project.desc}
                     </p>
                   </div>

@@ -1,10 +1,11 @@
 "use client";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+
+
+
 
 const categories = [
   {
@@ -63,7 +64,7 @@ export default function TechStack() {
     <section id="skills" ref={containerRef} className="py-32 relative">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold tracking-widest text-violet-400 uppercase mb-4">Tech Stack</h2>
+          <h2 className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: 'var(--violet-label)' }}>Tech Stack</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-white">Skills & Tools</h3>
         </div>
 
@@ -93,9 +94,18 @@ export default function TechStack() {
             {categories.find(c => c.id === activeTab)?.skills.map((skill) => (
               <div 
                 key={skill}
-                className="group flex items-center justify-center p-6 rounded-2xl bg-black/40 border border-white/5 hover:border-violet-500/50 transition-all duration-300 hover:bg-violet-900/20"
+                className="group flex items-center justify-center p-6 rounded-2xl border transition-all duration-300"
+                style={{
+                  background: 'var(--skill-card-bg)',
+                  borderColor: 'var(--skill-card-border)',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = 'var(--skill-card-hover-bg)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'var(--skill-card-bg)')}
               >
-                <span className="text-gray-300 font-medium group-hover:text-white group-hover:glow-text transition-all duration-300 text-center">
+                <span
+                  className="font-medium group-hover:glow-text transition-all duration-300 text-center"
+                  style={{ color: 'var(--skill-card-text)' }}
+                >
                   {skill}
                 </span>
               </div>

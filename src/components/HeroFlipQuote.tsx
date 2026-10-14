@@ -4,11 +4,33 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const quotes = [
-  "TO BUILD WHAT OTHERS CAN'T, YOU MUST LEARN WHAT OTHERS WON'T.",
-  "CRAFTING DIGITAL EXPERIENCES.",
-  "DESIGNING THE FUTURE OF THE WEB.",
-  "TURNING IDEAS INTO REALITY."
+  { text: "TO BUILD WHAT OTHERS CAN'T, YOU MUST LEARN WHAT OTHERS WON'T.", highlight: "BUILD" },
+  { text: "CRAFTING DIGITAL EXPERIENCES.", highlight: "DIGITAL" },
+  { text: "DESIGNING THE FUTURE OF THE WEB.", highlight: "FUTURE" },
+  { text: "TURNING IDEAS INTO REALITY.", highlight: "IDEAS" },
 ];
+
+function HighlightedText({ text, highlight }: { text: string; highlight: string }) {
+  const idx = text.indexOf(highlight);
+  if (idx === -1) return <>{text}</>;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <span
+        className="glow-text"
+        style={{
+          backgroundImage: "linear-gradient(90deg, #8b5cf6, #3b82f6)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        }}
+      >
+        {highlight}
+      </span>
+      {text.slice(idx + highlight.length)}
+    </>
+  );
+}
 
 export default function HeroFlipQuote() {
   const [index, setIndex] = useState(0);
@@ -30,8 +52,8 @@ export default function HeroFlipQuote() {
           style={{ transformOrigin: "center center -50px" }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.2] text-white group-hover:text-violet-300 transition-colors duration-300 uppercase">
-            {quotes[index]}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.2] text-white uppercase transition-colors duration-300">
+            <HighlightedText text={quotes[index].text} highlight={quotes[index].highlight} />
           </h1>
         </motion.div>
       </AnimatePresence>

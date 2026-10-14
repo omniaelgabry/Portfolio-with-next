@@ -1,12 +1,13 @@
 "use client";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
 import Image from "next/image";
 import FlipQuote from "./FlipQuote";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,16 +71,20 @@ export default function About() {
 
           {/* Text Side */}
           <div ref={textRef} className="flex flex-col justify-center">
-            <h2 className="text-sm font-bold tracking-widest text-violet-400 uppercase mb-4">About Me</h2>
+            <h2 className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: 'var(--violet-label)' }}>About Me</h2>
             <FlipQuote />
 
-            <p className="text-gray-300 text-lg leading-relaxed mb-10">
+            <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--fg-muted)' }}>
               A versatile Multi-Disciplinary Software Engineer & Digital Designer bridging the gap between elegant aesthetic design and powerful backend architecture. Specializing in crafting immersive frontend experiences, high-performance web applications, and intuitive UI/UX design. Driven by creativity, problem-solving, and building digital products that leave a lasting impact.
             </p>
 
             <div className="flex flex-wrap gap-4">
               {["Full-Stack Web Development", "UI/UX Design", "Visual Identity & Branding"].map((skill) => (
-                <div key={skill} className="px-6 py-3 rounded-full glass border border-violet-500/20 text-sm font-medium text-violet-100 hover:bg-violet-500/10 transition-colors clickable">
+                <div
+                  key={skill}
+                  className="px-6 py-3 rounded-full glass border border-violet-500/20 text-sm font-medium transition-colors clickable"
+                  style={{ color: 'var(--violet-label)' }}
+                >
                   {skill}
                 </div>
               ))}

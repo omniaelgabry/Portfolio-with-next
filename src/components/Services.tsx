@@ -1,11 +1,12 @@
 "use client";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
 import { Code2, Server, PenTool } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 const services = [
   {
@@ -58,7 +59,7 @@ export default function Services() {
     <section id="services" ref={containerRef} className="py-32 relative">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-20">
-          <h2 className="text-sm font-bold tracking-widest text-violet-400 uppercase mb-4">What I Do</h2>
+          <h2 className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: 'var(--violet-label)' }}>What I Do</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-white">My Services</h3>
         </div>
 
@@ -78,7 +79,7 @@ export default function Services() {
                   {service.icon}
                 </div>
                 <h4 className="text-2xl font-bold text-white mb-4">{service.title}</h4>
-                <p className="text-gray-400 text-lg group-hover:text-gray-300 transition-colors mt-auto">
+                <p className="text-lg group-hover:text-gray-300 transition-colors mt-auto" style={{ color: 'var(--fg-muted)' }}>
                   {service.desc}
                 </p>
               </div>

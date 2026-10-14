@@ -3,6 +3,9 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
+import ThemeProvider from "@/components/ThemeProvider";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import BackToTop from "@/components/BackToTop";
 
 export const metadata: Metadata = {
   title: "Multi-Disciplinary Software Engineer | Portfolio",
@@ -17,11 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="antialiased dark">
       <body>
-        <LenisProvider>
-          <CustomCursor />
-          <Navbar />
-          {children}
-        </LenisProvider>
+        <ThemeProvider>
+          <LenisProvider>
+            <ScrollProgressBar />
+            <CustomCursor />
+            <Navbar />
+            {children}
+            <BackToTop />
+          </LenisProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

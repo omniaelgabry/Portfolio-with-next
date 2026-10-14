@@ -1,89 +1,112 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #F8F6F0; /* Calm Beige */
-  --color-foreground: #1c1917; /* Dark text */
-  --color-neon-purple: #8b5cf6;
-  --color-neon-blue: #3b82f6;
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-  
-  /* Invert colors for light mode so existing utility classes adapt automatically */
-  --color-white: #1c1917; /* text-white will render as dark text */
-  --color-black: #F8F6F0; /* bg-black will render as beige */
-  
-  --color-gray-900: #e7e5e4;
-  --color-gray-800: #d6d3d1;
-  --color-gray-700: #a8a29e;
-  --color-gray-600: #78716c;
-  --color-gray-500: #57534e;
-  --color-gray-400: #44403c;
-  --color-gray-300: #292524;
-  --color-gray-200: #1c1917;
-  --color-gray-100: #0c0a09;
 }
 
-:root {
-  --background: #F8F6F0; /* Calm Beige */
-  --foreground: #1c1917; /* Dark text */
+/* ─── Dark Theme (default) ─────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg:          #0a0a0f;
+  --bg-subtle:   #111118;
+  --fg:          #f1f0f5;
+  --fg-muted:    #9ca3af;
+  --fg-faint:    #6b7280;
+  --border:      rgba(255,255,255,0.07);
+  --border-md:   rgba(255,255,255,0.10);
+  --glass-bg:    rgba(255,255,255,0.04);
+  --glass-purple-bg:   rgba(139,92,246,0.10);
+  --glass-purple-border: rgba(139,92,246,0.25);
+  --glass-purple-shadow: rgba(139,92,246,0.18);
+  --glow-text:   0 0 12px rgba(139,92,246,0.6), 0 0 30px rgba(139,92,246,0.3);
+  --glow-box:    0 0 20px rgba(139,92,246,0.4), inset 0 0 15px rgba(59,130,246,0.1);
+  --input-bg:    rgba(0,0,0,0.25);
+  --hero-glow-l: rgba(139,92,246,0.20);
+  --hero-glow-r: rgba(59,130,246,0.18);
+  --violet-label: #a78bfa;
+  --skill-card-bg: rgba(0,0,0,0.40);
+  --skill-card-border: rgba(255,255,255,0.05);
+  --skill-card-text: #d1d5db;
+  --skill-card-hover-bg: rgba(109,40,217,0.20);
+}
+
+/* ─── Light Theme ──────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:          #F8F6F2;
+  --bg-subtle:   #eeeae4;
+  --fg:          #1a1614;
+  --fg-muted:    #57534e;
+  --fg-faint:    #78716c;
+  --border:      rgba(0,0,0,0.08);
+  --border-md:   rgba(0,0,0,0.12);
+  --glass-bg:    rgba(255,255,255,0.55);
+  --glass-purple-bg:   rgba(139,92,246,0.08);
+  --glass-purple-border: rgba(139,92,246,0.20);
+  --glass-purple-shadow: rgba(139,92,246,0.12);
+  --glow-text:   0 0 8px rgba(109,40,217,0.35), 0 0 20px rgba(109,40,217,0.18);
+  --glow-box:    0 0 18px rgba(109,40,217,0.25), inset 0 0 12px rgba(37,99,235,0.08);
+  --input-bg:    rgba(255,255,255,0.70);
+  --hero-glow-l: rgba(139,92,246,0.12);
+  --hero-glow-r: rgba(59,130,246,0.10);
+  --violet-label: #6d28d9;
+  --skill-card-bg: rgba(139,92,246,0.08);
+  --skill-card-border: rgba(109,40,217,0.25);
+  --skill-card-text: #4c1d95;
+  --skill-card-hover-bg: rgba(139,92,246,0.18);
+}
+
+/* ─── Base styles ──────────────────────────────────────── */
+html {
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
-  cursor: none; /* We will use custom cursor */
+  cursor: none;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Force Tailwind classes to obey light theme */
-.text-white { color: #1c1917 !important; }
-.bg-white { background-color: #1c1917 !important; }
-.text-gray-400 { color: #57534e !important; }
-.text-gray-300 { color: #44403c !important; }
-.text-gray-200 { color: #292524 !important; }
-.border-white\/10 { border-color: rgba(28, 25, 23, 0.1) !important; }
-.border-white\/5 { border-color: rgba(28, 25, 23, 0.05) !important; }
-.bg-black\/20 { background-color: rgba(248, 246, 240, 0.5) !important; }
-.bg-black { background-color: #F8F6F0 !important; }
+/* ─── Utility class overrides using CSS vars ───────────── */
+.text-white       { color: var(--fg) !important; }
+.text-gray-400    { color: var(--fg-muted) !important; }
+.text-gray-300    { color: var(--fg-faint) !important; }
+.border-white\/10 { border-color: var(--border) !important; }
+.border-white\/5  { border-color: var(--border) !important; }
+.bg-black\/20     { background-color: var(--input-bg) !important; }
 
-/* Glassmorphism Utilities */
+/* hero glows */
+[data-theme="light"] .hero-glow-l { background: var(--hero-glow-l) !important; }
+[data-theme="light"] .hero-glow-r { background: var(--hero-glow-r) !important; }
+
+/* ─── Glassmorphism ────────────────────────────────────── */
 .glass {
-  background: rgba(0, 0, 0, 0.03); /* Changed to dark overlay for light theme */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .glass-purple {
-  background: rgba(139, 92, 246, 0.08); /* Adjusted for light theme visibility */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  box-shadow: 0 4px 30px rgba(139, 92, 246, 0.15);
+  background: var(--glass-purple-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-purple-border);
+  box-shadow: 0 4px 30px var(--glass-purple-shadow);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.glow-text {
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3), 0 0 20px rgba(139, 92, 246, 0.2);
-}
+.glow-text  { text-shadow: var(--glow-text); }
+.glow-box   { box-shadow:  var(--glow-box); }
 
-.glow-box {
-  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3), inset 0 0 15px rgba(59, 130, 246, 0.1);
-}
+/* ─── Lenis ────────────────────────────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth          { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped         { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
 
-/* Lenis Smooth Scroll Utilities */
-html.lenis, html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}

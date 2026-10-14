@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { gsap } from "@/lib/gsap";
 import { ArrowRight } from "lucide-react";
 
 import HeroFlipQuote from "./HeroFlipQuote";

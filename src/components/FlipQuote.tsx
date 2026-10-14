@@ -30,7 +30,10 @@ export default function FlipQuote() {
           style={{ transformOrigin: "center center -20px" }}
           className="absolute inset-0 flex items-center"
         >
-          <h3 className="text-4xl md:text-5xl font-bold text-white group-hover:text-violet-200 transition-colors duration-300">
+          <h3
+            className="text-4xl md:text-5xl font-bold transition-colors duration-300"
+            style={{ color: 'var(--fg)' }}
+          >
             {quotes[index]}
           </h3>
         </motion.div>
