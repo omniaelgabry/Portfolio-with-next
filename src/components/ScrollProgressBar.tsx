@@ -32,7 +32,7 @@ export default function ScrollProgressBar() {
         ref={barRef}
         className="h-full origin-left"
         style={{
-          scaleX: 0,
+          transform: "scaleX(0)",
           background: "linear-gradient(90deg, #8b5cf6, #3b82f6, #8b5cf6)",
           backgroundSize: "200% 100%",
           boxShadow: "0 0 10px rgba(139,92,246,0.8)",
