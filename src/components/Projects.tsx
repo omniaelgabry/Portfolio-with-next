@@ -92,6 +92,13 @@ const projects = [
     desc: "Interactive Connect Four game with player turn tracking and win detection.",
     link: "https://connect-four-frontend-rosy.vercel.app",
     tags: ["Game", "React", "Logic"]
+  },
+  {
+    num: "13",
+    title: "Hogwarts Tribute & Archive",
+    desc: "A magical Harry Potter tribute site featuring an immersive Hogwarts archive experience with flame effects and wizarding world aesthetics.",
+    link: "https://harry-poter-flame.vercel.app",
+    tags: ["Tribute", "Vite", "React"]
   }
 ];
 
